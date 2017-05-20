@@ -1,4 +1,4 @@
-package com.leomendez.roomlist
+package com.leomendez.roomlist.view
 
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -7,19 +7,18 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
+import com.leomendez.roomlist.R
+import kotlinx.android.synthetic.main.activity_to_do.*
 
 class ToDoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_do)
-        val toolbar = findViewById(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
 
-        val fab = findViewById(R.id.fab) as FloatingActionButton
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        setSupportActionBar(toolbar)
+        add_to_do.setOnClickListener { view ->
+            ToDoFragment.instance.show(fragmentManager,"ToDoFragment")
         }
     }
 
@@ -35,4 +34,6 @@ class ToDoActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
