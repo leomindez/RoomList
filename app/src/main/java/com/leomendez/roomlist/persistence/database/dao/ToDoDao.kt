@@ -1,5 +1,6 @@
 package com.leomendez.roomlist.persistence.database.dao
 
+import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import com.leomendez.roomlist.persistence.database.entity.ToDo
 
@@ -11,7 +12,7 @@ import com.leomendez.roomlist.persistence.database.entity.ToDo
 interface ToDoDao {
 
     @Query("SELECT * FROM todo")
-    fun getAll():List<ToDo>
+    fun getAll():LiveData<List<ToDo>>
 
     @Insert
     fun insert(vararg todo:ToDo)
