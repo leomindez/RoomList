@@ -10,6 +10,6 @@ import java.util.*
  */
 
 @Entity
-data class ToDo(@PrimaryKey var id:Int,
-                @ColumnInfo(name = "todo") var toDo:String,
-                @ColumnInfo(name="todo_date")var date: Date)
+data class ToDo(@PrimaryKey var id:Int = 0,
+                @ColumnInfo(name = "todo") var toDo:String = "",
+                @ColumnInfo(name="todo_date")var date: Date? = null)
