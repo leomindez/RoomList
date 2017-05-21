@@ -11,14 +11,14 @@ import com.leomendez.roomlist.persistence.database.entity.ToDo
 interface ToDoDao {
 
     @Query("SELECT * FROM todo")
-    fun getToDoList():List<ToDo>
+    fun getAll():List<ToDo>
 
     @Insert
     fun insert(vararg todo:ToDo)
 
     @Delete
-    fun deleteToDo(todo:ToDo)
+    fun delete(todo:ToDo)
 
     @Update
-    fun updateToDo(vararg todo: ToDo)
+    fun update(vararg todo: ToDo)
 }
