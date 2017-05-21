@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "caf7352294ce1f9582fc10649cd35ca4",
+    "identityHash": "c71d36f4087adac74aa4e2c5273417fc",
     "entities": [
       {
-        "tableName": "ToDo",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `todo` TEXT, `todo_date` INTEGER, PRIMARY KEY(`id`))",
+        "tableName": "todo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER, `task` TEXT, `todo_date` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -15,7 +15,7 @@
           },
           {
             "fieldPath": "toDo",
-            "columnName": "todo",
+            "columnName": "task",
             "affinity": "TEXT"
           },
           {
@@ -36,7 +36,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"caf7352294ce1f9582fc10649cd35ca4\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c71d36f4087adac74aa4e2c5273417fc\")"
     ]
   }
 }
