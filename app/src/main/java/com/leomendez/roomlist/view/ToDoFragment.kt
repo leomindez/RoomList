@@ -59,10 +59,9 @@ class ToDoFragment : DialogFragment() {
         }
 
         save_todo_btn.setOnClickListener {
-            val id = SecureRandom().nextInt()
+            val id = 23
             val toDo = ToDo(Math.abs(id),todo_title.text.toString(),toDoDate)
             insertToDo(database,toDo)
-            dismiss()
         }
     }
 
@@ -78,6 +77,10 @@ class ToDoFragment : DialogFragment() {
             database.toDoDao().insert(toDo)
         })
         asyncInsert.run()
+        if(asyncInsert.isDone){
+            dismiss()
+            database.close()
+        }
     }
 }
 

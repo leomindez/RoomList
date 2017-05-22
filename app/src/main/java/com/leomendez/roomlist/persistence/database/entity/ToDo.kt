@@ -12,4 +12,4 @@ import java.util.*
 @Entity( tableName = "todo")
 data class ToDo(@PrimaryKey var id:Int = 0,
                 @ColumnInfo(name = "task") var toDo:String = "",
-                @ColumnInfo(name="todo_date")var date: Date? = null)
+                @ColumnInfo(name="date")var date: Date? = null)

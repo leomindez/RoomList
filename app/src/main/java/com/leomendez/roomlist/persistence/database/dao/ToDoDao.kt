@@ -14,7 +14,7 @@ interface ToDoDao {
     @Query("SELECT * FROM todo")
     fun getAll():LiveData<List<ToDo>>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg todo:ToDo)
 
     @Delete
