@@ -3,11 +3,11 @@ package com.leomendez.roomlist.view
 
 import android.app.DialogFragment
 import android.os.Bundle
-import android.util.Log
-
-import android.view.*
-
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.leomendez.roomlist.R
+import com.leomendez.roomlist.repository.ToDoRepository
 import com.leomendez.roomlist.persistence.database.database.ToDoDatabase
 import com.leomendez.roomlist.persistence.database.entity.ToDo
 import com.leomendez.roomlist.persistence.database.manager.DatabaseManager
@@ -16,9 +16,6 @@ import kotlinx.android.synthetic.main.fragment_to_do.*
 import java.security.SecureRandom
 import java.text.DateFormat
 import java.util.*
-import java.util.concurrent.Callable
-import java.util.concurrent.Future
-import java.util.concurrent.FutureTask
 
 
 /**
@@ -48,6 +45,7 @@ class ToDoFragment : DialogFragment() {
 
         val dateFormat = DateFormat.getDateInstance().format(date)
         val database = DatabaseManager.invoke<ToDoDatabase>(activity.applicationContext,"todos.db")
+        val toDoRepository = ToDoRepository(database)
         to_do_date.setText(dateFormat)
 
         to_do_date.setOnClickListener {
@@ -59,9 +57,10 @@ class ToDoFragment : DialogFragment() {
         }
 
         save_todo_btn.setOnClickListener {
-            val id = 23
+            val id = Math.abs(SecureRandom().nextInt())
             val toDo = ToDo(Math.abs(id),todo_title.text.toString(),toDoDate)
-            insertToDo(database,toDo)
+            toDoRepository.insertToDo(database,toDo)
+            dismiss()
         }
     }
 
@@ -72,15 +71,5 @@ class ToDoFragment : DialogFragment() {
         }).show(activity.fragmentManager,"date_picker")
     }
 
-    private fun insertToDo(database: ToDoDatabase,toDo:ToDo){
-        val asyncInsert = FutureTask<Unit>(Callable{
-            database.toDoDao().insert(toDo)
-        })
-        asyncInsert.run()
-        if(asyncInsert.isDone){
-            dismiss()
-            database.close()
-        }
-    }
 }
 

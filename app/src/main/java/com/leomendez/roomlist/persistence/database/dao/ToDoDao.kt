@@ -11,7 +11,7 @@ import com.leomendez.roomlist.persistence.database.entity.ToDo
 @Dao
 interface ToDoDao {
 
-    @Query("SELECT * FROM todo")
+    @Query("SELECT * FROM todo ORDER BY date DESC")
     fun getAll():LiveData<List<ToDo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
