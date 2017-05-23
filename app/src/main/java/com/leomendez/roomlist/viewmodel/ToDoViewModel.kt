@@ -3,9 +3,7 @@ package com.leomendez.roomlist.viewmodel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.arch.persistence.room.Room
-import android.arch.persistence.room.RoomDatabase
-import com.leomendez.roomlist.persistence.database.database.ToDoDatabase
+import com.leomendez.roomlist.repository.ToDoRepository
 import com.leomendez.roomlist.persistence.database.entity.ToDo
 
 /**
@@ -13,14 +11,13 @@ import com.leomendez.roomlist.persistence.database.entity.ToDo
  */
 
 class ToDoViewModel:ViewModel(){
+    private var toDoRepository: ToDoRepository? = null
+    var dataLive:LiveData<List<ToDo>> = MutableLiveData<List<ToDo>>()
 
-    private var database:ToDoDatabase? = null
 
-    fun init(database: ToDoDatabase){
-        this.database = database
+    fun init(toDoRepository: ToDoRepository){
+        dataLive = toDoRepository.getAllToDO()
     }
 
-    fun getAllToDo():LiveData<List<ToDo>>?
-        = database?.toDoDao()?.getAll()
 
 }
