@@ -4,7 +4,8 @@ How to use Room Library to persistence data into Android Application
 There are 3 main classes that I used to create the example.
 
 [ToDoViewModel](https://github.com/leomindez/RoomList/blob/master/app/src/main/java/com/leomendez/roomlist/viewmodel/ToDoViewModel.kt)
-It helps to show the data from repository class. Live Data uses add Observable/Observer to notify data changes. 
+It helps to show the data from repository class. 
+Live Data uses Observable/Observer to notify data changes. 
 
 **Create new executors to insert/delete/update objects into database using Room**.
 
