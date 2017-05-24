@@ -3,6 +3,7 @@ package com.leomendez.roomlist.view
 
 import android.app.DialogFragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,15 +22,10 @@ import java.util.*
 /**
  * A simple [Fragment] subclass.
  */
-class ToDoFragment : DialogFragment() {
+class ToDoFragment : Fragment() {
 
     companion object{
         var instance = lazy{ ToDoFragment()}.value
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.Theme_AppCompat_Light_Dialog_Alert);
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -60,7 +56,7 @@ class ToDoFragment : DialogFragment() {
             val id = Math.abs(SecureRandom().nextInt())
             val toDo = ToDo(Math.abs(id),todo_title.text.toString(),toDoDate)
             toDoRepository.insertToDo(database,toDo)
-            dismiss()
+            activity.finish()
         }
     }
 
