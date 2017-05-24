@@ -36,9 +36,9 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/save_todo_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="center"
         android:padding="@dimen/medium_padding"
         android:text="@string/to_do_dialog_save_btn"
         android:textColor="@android:color/white"

@@ -3,6 +3,7 @@ package com.leomendez.roomlist.view
 import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
@@ -36,7 +37,7 @@ class ToDoActivity : LifecycleActivity() {
         todo_list.adapter = adapter
 
         add_to_do.setOnClickListener { view ->
-            ToDoFragment.instance.show(fragmentManager,"ToDoFragment")
+            startActivity(Intent(this,AddToDoActivity::class.java))
         }
 
     }
